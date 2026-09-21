@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\certificates;
 use App\Models\courses;
 use App\Models\students;
+use App\Exports\CertificateExport;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
@@ -58,6 +61,54 @@ class CertificateController extends Controller
         return view('certificate.index', [
             'certificate' => certificates::where('students_id', 'like', "%$busqueda%")->paginate(10)
         ]);
+    }
+
+    /**
+     * Calculate the expiration (vencimiento) date of a certificate based on
+     * its expedition date and the related course's validation period (in years).
+     *
+     * @param  certificates  $certificate
+     * @return \Carbon\Carbon
+     */
+    private function getVencimiento(certificates $certificate): Carbon
+    {
+        $years = (int) ($certificate->courses['course_validation'] ?? 0);
+
+        return Carbon::parse($certificate->certificate_expedition)->addYears($years);
+    }
+
+    /**
+     * Export to Excel all certificates whose expiration date falls within
+     * the given date range.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function exportExcel(Request $request)
+    {
+        $fields = $request->validate([
+            'fecha_desde' => 'required|date',
+            'fecha_hasta' => 'required|date|after_or_equal:fecha_desde',
+        ]);
+
+        $fechaDesde = Carbon::parse($fields['fecha_desde'])->startOfDay();
+        $fechaHasta = Carbon::parse($fields['fecha_hasta'])->endOfDay();
+
+        $certificates = certificates::with(['courses', 'students'])
+            ->get()
+            ->map(function ($certificate) {
+                $certificate->vencimiento = $this->getVencimiento($certificate);
+                return $certificate;
+            })
+            ->filter(function ($certificate) use ($fechaDesde, $fechaHasta) {
+                return $certificate->vencimiento->between($fechaDesde, $fechaHasta);
+            })
+            ->values();
+
+        return Excel::download(
+            new CertificateExport($certificates),
+            'certificados_' . $fechaDesde->format('Y-m-d') . '_a_' . $fechaHasta->format('Y-m-d') . '.xlsx'
+        );
     }
 
     /**

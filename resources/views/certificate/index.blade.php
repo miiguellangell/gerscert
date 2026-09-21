@@ -32,10 +32,48 @@
                                     </a>
                                 </div>
                                 <div class="col-auto">
+                                    <button type="button" class="btn btn-verde" data-toggle="modal" data-target="#exportExcelModal">
+                                        <i class="fa fa-file-excel-o" aria-hidden="true"></i> <span>EXPORTAR EXCEL</span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
                                     <a href="{{ route('certificate.create') }}" class="btn btn-verde">
                                         <i class="fa fa-plus-circle" aria-hidden="true"></i> <span>NUEVO CERTIFICADO</span>
                                     </a>
                                 </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de exportación a Excel por rango de fecha de vencimiento -->
+            <div class="modal fade" id="exportExcelModal" tabindex="-1" role="dialog" aria-labelledby="exportExcelModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form method="GET" action="{{ route('certificate.ExportExcel') }}">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exportExcelModalLabel">Exportar certificados a Excel</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Selecciona el rango de fechas de <strong>vencimiento</strong> de certificado a exportar.</p>
+                                <div class="form-group">
+                                    <label for="fecha_desde">Desde</label>
+                                    <input type="text" name="fecha_desde" id="fecha_desde" data-date-format="yyyy-mm-dd" class="form-control" placeholder="Fecha desde" required autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                    <label for="fecha_hasta">Hasta</label>
+                                    <input type="text" name="fecha_hasta" id="fecha_hasta" data-date-format="yyyy-mm-dd" class="form-control" placeholder="Fecha hasta" required autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-verde">
+                                    <i class="fa fa-download" aria-hidden="true"></i> Descargar Excel
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -113,6 +151,14 @@
         todayHighlight: true,
     });
     $('#datepicker').datepicker("setDate", new Date());
+
+    $('#fecha_desde, #fecha_hasta').datepicker({
+        format: 'yyyy-mm-dd',
+        weekStart: 1,
+        daysOfWeekHighlighted: "6,0",
+        autoclose: true,
+        todayHighlight: true,
+    });
 </script>
 
 @endsection
