@@ -18,8 +18,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
 </head>
 <body>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
     <div class="wrapper d-flex align-items-stretch">
         <!-- Sidebar -->
         <nav id="sidebar">

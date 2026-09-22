@@ -12,8 +12,25 @@
 	};
 	fullHeight();
 
+	var toggleSidebar = function () {
+		$('#sidebar').toggleClass('active');
+		$('body').toggleClass('sidebar-open');
+	};
+
 	$('#sidebarCollapse').on('click', function () {
-      $('#sidebar').toggleClass('active');
-  });
+		toggleSidebar();
+	});
+
+	$('#sidebarBackdrop').on('click', function () {
+		if ($('body').hasClass('sidebar-open')) {
+			toggleSidebar();
+		}
+	});
+
+	$('#sidebar a').on('click', function () {
+		if ($(window).width() < 992 && $('body').hasClass('sidebar-open')) {
+			toggleSidebar();
+		}
+	});
 
 })(jQuery);

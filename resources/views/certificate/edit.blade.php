@@ -6,7 +6,7 @@
             @csrf @method('PATCH')
 
             @csrf
-            <h2 style="margin-top: 50px; margin-bottom: 50px">Nuevo Certificado</h2>
+            <h2>Nuevo Certificado</h2>
 
             <div class="form-group">
                 <label >Seleccione Un Estudiante</label>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
+            <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Crear</button>
             </div>
         </form>

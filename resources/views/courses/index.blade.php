@@ -4,11 +4,10 @@
 
 @section('content')
 <div class="container-xl">
-	<div class="table-responsive">
-		<div class="table-wrapper">
-			<div class="table-title">
-				<div class="row">
-					<div class="col-sm-6">
+	<div class="table-wrapper">
+		<div class="table-title">
+			<div class="row">
+				<div class="col-sm-6">
 						<h2 class="table-head-title">Gestionar <b>Cursos</b></h2>
 					</div>
 
@@ -33,6 +32,7 @@
 				</div>
 			</div>
 			
+			<div class="table-scroll">
 			<table id="tableData" class="table table-striped table-hover">
 				<thead>
 					<tr>
@@ -77,9 +77,12 @@
 					</tr>
 				</tbody>
                 @endforeach
-                {{ $courses->links("pagination::bootstrap-4") }}
 			</table>
-		</div>
+			</div>
+
+			<div class="pagination-wrapper">
+				{{ $courses->links("pagination::bootstrap-4") }}
+			</div>
 	</div>
 </div>
 @endsection

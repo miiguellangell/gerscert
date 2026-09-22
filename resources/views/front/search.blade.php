@@ -4,11 +4,10 @@
 
 @section('content')
 <div class="container-xl">
-    <div class="table-responsive">
-        <div class="table-wrapper">
-            <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
                         <h2 class="table-head-title">Buscar <b>Certificados</b></h2>
                     </div>
 
@@ -30,6 +29,7 @@
                 </div>
             </div>
 
+            <div class="table-scroll">
             <table id="tableData" class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -75,14 +75,14 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
 
                  <!-- Validación de paginación -->
                  @if ($certificate->hasPages())
-                <div class="d-flex justify-content-center">
+                <div class="pagination-wrapper d-flex justify-content-center">
                     {{ $certificate->links("pagination::bootstrap-4") }}
                 </div>
             @endif
-        </div>
     </div>
 </div>
 @endsection

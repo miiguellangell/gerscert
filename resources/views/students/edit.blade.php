@@ -4,9 +4,9 @@
     <div class="signup-form">
         <form action="{{ route('students.update', $students) }}" method="post">
             @csrf @method('PATCH')
-            <h2 style="margin-top: 50px; margin-bottom: 50px">Editar Estudiante</h2>
+            <h2>Editar Estudiante</h2>
                  
-            <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
+            <div class="form-group">
             <select class="selectpicker" data-live-search="true" name="typeid" id="">
                     <option value="">Seleccione un tipo de documento</option>
                     <option value="C.C">Cedula de ciudadania</option>
@@ -27,22 +27,22 @@
                 {!!$errors->first('student_name', '<small>:message</small><br>' )!!}
             </div>
 
-            <div style="margin-top: 25px; margin-bottom: 25px"class="form-group">
+            <div class="form-group">
                 <input type="text" class="form-control" name="student_description" value="{{ $students->student_description}}" required="required">
                 {!!$errors->first('student_description', '<small>:message</small><br>' )!!}
             </div>
 
-            <div style="margin-top: 25px; margin-bottom: 25px"  class="form-group">
+            <div  class="form-group">
                 <input type="number" min="-0" max="120" class="form-control" name="student_age" value="{{ $students->student_age}}" required="required">
                 {!!$errors->first('student_age', '<small>:message</small><br>' )!!}
             </div>
 
-            <div style="margin-top: 25px; margin-bottom: 25px"  class="form-group">
+            <div  class="form-group">
                 <input type="email" class="form-control" name="student_mail" value="{{ $students->student_mail}}" required="required">
                 {!!$errors->first('student_mail', '<small>:message</small><br>' )!!}
             </div>
 
-            <div style="margin-top: 25px; margin-bottom: 25px" class="form-group">
+            <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Editar</button>
             </div>
 

@@ -1,0 +1,533 @@
+/* =========================================================
+   Theme refresh — Certificados Gerscol
+   Loaded after style.css. Keeps the existing brand colors
+   (navy + olive green) but modernizes components and fixes
+   responsive behavior. Prefer editing this file over the
+   legacy style.css.
+   ========================================================= */
+
+:root {
+    --navy-900: #0c2b55;
+    --navy-700: #16386b;
+    --navy-500: #435d7d;
+    --green-600: #6e8330;
+    --green-500: #82983c;
+    --green-400: #8ca13a;
+    --yellow-500: #e0cc18;
+    --red-500: #d9534f;
+    --ink: #2c3e50;
+    --muted: #6b7a90;
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --border: #e6e9ef;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow-sm: 0 1px 2px rgba(16, 30, 54, 0.06);
+    --shadow-md: 0 6px 16px rgba(16, 30, 54, 0.08);
+    --shadow-lg: 0 12px 30px rgba(16, 30, 54, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--navy-500);
+}
+
+a:hover {
+    color: var(--green-600);
+}
+
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* -------------------------------------------------
+   Layout / wrapper
+   ------------------------------------------------- */
+.wrapper {
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+#content {
+    background: var(--bg);
+    min-width: 0; /* allow flex child to shrink instead of forcing page-wide overflow */
+}
+
+.container, .container-xl, .container-fluid {
+    max-width: 100%;
+}
+
+/* -------------------------------------------------
+   Sidebar
+   ------------------------------------------------- */
+#sidebar {
+    background: linear-gradient(180deg, var(--navy-900) 0%, #0a2246 100%) !important;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-lg);
+    z-index: 1040;
+}
+
+#sidebar .p-4.pt-5 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 1.5rem !important;
+}
+
+#sidebar .imglogo {
+    max-width: 100%;
+    width: auto;
+    height: 48px;
+    margin: 0 0 1.5rem 0;
+}
+
+#sidebar ul.components {
+    flex: 1 1 auto;
+}
+
+#sidebar ul li a {
+    border-bottom: none;
+    border-radius: var(--radius-sm);
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.15rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.75);
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+#sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transform: translateX(2px);
+}
+
+#sidebar ul li.active > a {
+    background: var(--green-500);
+    color: #fff !important;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+}
+
+#sidebar .footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar .footer p {
+    font-size: 0.75rem;
+}
+
+#sidebar .footer a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.custom-menu .btn.btn-primary {
+    box-shadow: var(--shadow-sm);
+}
+
+/* Mobile sidebar: overlay instead of squeezing content, plus backdrop */
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(12, 43, 85, 0.45);
+    z-index: 1030;
+}
+
+@media (max-width: 991.98px) {
+    #sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    #content {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    body.sidebar-open .sidebar-backdrop {
+        display: block;
+    }
+
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 992px) {
+    #sidebarCollapse {
+        display: none;
+    }
+}
+
+/* -------------------------------------------------
+   Buttons
+   ------------------------------------------------- */
+.btn {
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 0.5rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn:hover, .btn:focus {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-azul {
+    background-color: var(--navy-500) !important;
+    border-color: var(--navy-500) !important;
+    color: #fff !important;
+}
+
+.btn-azul:hover, .btn-azul:focus {
+    background-color: var(--navy-700) !important;
+    border-color: var(--navy-700) !important;
+    color: #fff !important;
+}
+
+.btn-verde {
+    background-color: var(--green-500) !important;
+    border-color: var(--green-500) !important;
+    color: #fff !important;
+}
+
+.btn-verde:hover, .btn-verde:focus {
+    background-color: var(--green-600) !important;
+    border-color: var(--green-600) !important;
+    color: #fff !important;
+}
+
+.btn.btn-primary {
+    background: var(--navy-500);
+    border-color: var(--navy-500);
+}
+
+.btn.btn-primary:hover, .btn.btn-primary:focus {
+    background: var(--navy-700) !important;
+    border-color: var(--navy-700) !important;
+}
+
+.btn-success {
+    background-color: var(--green-500) !important;
+    border-color: var(--green-500) !important;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: var(--green-600) !important;
+    border-color: var(--green-600) !important;
+}
+
+/* Row/table icon actions */
+.pencil,
+.butondel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: transparent;
+    margin: 0 2px;
+    transition: background-color 0.15s ease;
+    vertical-align: middle;
+}
+
+.pencil:hover,
+.butondel:hover {
+    background: var(--bg);
+}
+
+.pencil i,
+.butondel i {
+    font-size: 16px !important;
+}
+
+/* -------------------------------------------------
+   Cards / table wrapper
+   ------------------------------------------------- */
+.table-wrapper {
+    min-width: 0 !important;
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 0;
+    overflow: hidden;
+}
+
+.table-title {
+    background: linear-gradient(90deg, var(--navy-900) 0%, var(--navy-500) 100%);
+    margin: 0 !important;
+    border-radius: 0 !important;
+    padding: 1.1rem 1.25rem;
+}
+
+.table-title .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.table-title h2.table-head-title {
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.table-title form {
+    margin: 0;
+}
+
+.table-title .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.table-title .form-row > .col,
+.table-title .form-row > .col-auto {
+    padding: 0;
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.table-title .text-right,
+.table-title .col-sx-6 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.table-title .btn {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.82rem;
+}
+
+.form-search {
+    height: 38px;
+    padding: 0 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+    min-width: 0;
+}
+
+.mb-3 {
+    margin-left: 0 !important;
+}
+
+/* Only the actual table scrolls horizontally on small screens,
+   not the header/search/actions above it. */
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper table {
+    margin-bottom: 0;
+    min-width: 640px;
+}
+
+table.table {
+    background: var(--surface);
+}
+
+table.table thead th {
+    background: #f7f9fc;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border) !important;
+    white-space: nowrap;
+}
+
+table.table td {
+    vertical-align: middle;
+}
+
+.pagination-wrapper {
+    padding: 1rem 1.25rem;
+}
+
+.pagination {
+    justify-content: flex-end;
+    float: none !important;
+}
+
+/* -------------------------------------------------
+   Forms (signup-form is reused by every create/edit view)
+   ------------------------------------------------- */
+.signup-form {
+    width: 100%;
+    max-width: 560px;
+    padding: 0;
+    font-size: 0.95rem;
+}
+
+.signup-form h2 {
+    margin: 0 0 1.5rem 0 !important;
+    font-size: 1.4rem;
+    color: var(--ink);
+}
+
+.signup-form h2::before,
+.signup-form h2::after {
+    display: none;
+}
+
+.signup-form form {
+    background: var(--surface);
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+}
+
+.signup-form .form-group {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.signup-form .form-group:first-child {
+    margin-top: 0 !important;
+}
+
+.signup-form label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
+
+.form-control {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus {
+    border-color: var(--navy-500) !important;
+    box-shadow: 0 0 0 3px rgba(67, 93, 125, 0.15) !important;
+}
+
+.signup-form .btn-block {
+    margin-top: 0.5rem;
+}
+
+.card {
+    border: none;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    background: var(--navy-900);
+    color: #fff;
+    font-weight: 600;
+    border-radius: var(--radius) var(--radius) 0 0 !important;
+}
+
+/* Legacy style.css forces `button, input, select, textarea { width: 100% !important }`
+   site-wide. That's fine for form fields, but it breaks any button/icon-link that
+   should stay content-sized (header actions, row action icons). Higher-specificity
+   overrides below win regardless of source order. */
+.btn,
+a.pencil,
+button.butondel,
+#sidebarCollapse {
+    width: auto !important;
+}
+
+/* -------------------------------------------------
+   Widget fixes: bootstrap-select / datepicker overflow
+   ------------------------------------------------- */
+.dropdown-menu {
+    min-width: 220px !important;
+    left: 0 !important;
+    max-width: 90vw;
+}
+
+.datepicker.datepicker-dropdown {
+    left: auto !important;
+    top: auto !important;
+}
+
+/* -------------------------------------------------
+   Responsive tweaks
+   ------------------------------------------------- */
+@media (max-width: 767.98px) {
+    #content {
+        padding: 1rem !important;
+    }
+
+    .table-title {
+        padding: 1rem;
+    }
+
+    .table-title h2.table-head-title {
+        font-size: 1.1rem;
+    }
+
+    .table-title .row > div {
+        width: 100%;
+    }
+
+    .table-title .text-right,
+    .table-title .col-sx-6,
+    .table-title .form-row {
+        justify-content: flex-start;
+    }
+
+    .table-title .btn span {
+        display: none;
+    }
+
+    .table-title .btn {
+        padding: 0.55rem 0.7rem;
+    }
+
+    .signup-form form {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #sidebar {
+        min-width: 85vw;
+        max-width: 85vw;
+    }
+}
