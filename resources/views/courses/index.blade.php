@@ -7,31 +7,37 @@
 	<div class="table-wrapper">
 		<div class="table-title">
 			<div class="row">
-				<div class="col-sm-6">
-						<h2 class="table-head-title">Gestionar <b>Cursos</b></h2>
-					</div>
+				<div class="col-sm-4">
+					<h2 class="table-head-title">Gestionar <b>Cursos</b></h2>
+				</div>
 
-                    <div class="col-xs-6">
-                        <form>
-                            <div class="md-form active-pink active-pink-2 mb-3">
-                                <input name="Busqueda" class="form-search" placeholder="Buscar..." type="search" id="search1" aria-label="Search" mdbInput>
-                            </div>
-                        </form>
-					</div>
-
-					<div class="col-xs-6">
-                        <a href="{{ route('courses.index') }}" class="btn btn-azul">
-                            <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
-                            <span>REFRESCAR</span>
-                        </a>
-						<a href="{{ route('courses.create') }}" class="btn btn-verde">
-                            <i class="bi bi-plus-circle" aria-hidden="true"></i>
-                            <span>NUEVO CURSO</span>
-                        </a>
-					</div>
+				<div class="col-sm-8">
+					<form method="GET" action="{{ route('courses.index') }}">
+						<div class="form-row">
+							<div class="col">
+								<input name="Busqueda" class="form-control search-input-wide" placeholder="Buscar por nombre del curso..." type="search" id="search1" aria-label="Search" value="{{ request('Busqueda') }}">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
+							</div>
+							<div class="col-auto">
+								<a href="{{ route('courses.index') }}" class="btn btn-azul">
+									<i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+									<span>REFRESCAR</span>
+								</a>
+							</div>
+							<div class="col-auto">
+								<a href="{{ route('courses.create') }}" class="btn btn-verde">
+									<i class="bi bi-plus-circle" aria-hidden="true"></i>
+									<span>NUEVO CURSO</span>
+								</a>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			
+			</div>
+
 			<div class="table-scroll">
 			<table id="tableData" class="table table-striped table-hover">
 				<thead>

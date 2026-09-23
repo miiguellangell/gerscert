@@ -7,23 +7,28 @@
 	<div class="table-wrapper">
 		<div class="table-title">
 			<div class="row">
-				<div class="col-sm-6">
-						<h2 class="table-head-title">Buscar <b>Certificados</b></h2>
-					</div>
-
-                    <div class="col-xs-6">
-                        <form>
-                            <div class="md-form active-pink active-pink-2 mb-3">
-                              <input name="Busqueda" class="form-search" placeholder="Buscar..." type="search" id="search1" aria-label="Search" mdbInput>
-                            </div>
-                        </form>
-					</div>
-
-					<div class="col-sx-6">
-                        <!-- Search form -->
-                        <a href="{{ route('Front.search2')}}" class="btn btn-azul" ><i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFESCAR</span></a>
-					</div>
+				<div class="col-sm-4">
+					<h2 class="table-head-title">Buscar <b>Certificados</b></h2>
 				</div>
+
+				<div class="col-sm-8">
+					<form method="GET" action="{{ route('Front.search2') }}">
+						<div class="form-row">
+							<div class="col">
+								<input name="Busqueda" class="form-control search-input-wide" placeholder="Buscar por cédula o nombre..." type="search" id="search1" aria-label="Search" value="{{ request('Busqueda') }}">
+							</div>
+							<div class="col-auto">
+								<button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
+							</div>
+							<div class="col-auto">
+								<a href="{{ route('Front.search2') }}" class="btn btn-azul">
+									<i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFRESCAR</span>
+								</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 			</div>
 
 			<div class="table-scroll">

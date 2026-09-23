@@ -22,7 +22,7 @@ class CourseController extends Controller
         $busqueda_curso = $request->get('Busqueda');
     
         // Buscar cursos por nombre y paginarlos (10 por página)
-        $courses = Courses::where('course_name', 'like', "%$busqueda_curso%")->paginate(10);
+        $courses = Courses::where('course_name', 'like', "%$busqueda_curso%")->paginate(10)->withQueryString();
     
         // Devolver los cursos a la vista
         return view('courses.index', [
