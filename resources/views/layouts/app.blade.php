@@ -38,19 +38,17 @@
                             <a href="/busqueda">Descargar certificados</a>
                         </li>
                         @auth
+                        @if(auth()->user()->is_admin)
                         <li class="{{ request()->routeIs('students') ? 'active' : ''}}">
                             <a href="/students">Gestionar Estudiantes</a>
                         </li>
-                        @endauth
-                        @auth
                         <li class="{{ request()->routeIs('courses.*') ? 'active' : ''}}">
                             <a href="/courses">Gestionar Cursos</a>
                         </li>
-                        @endauth
-                        @auth
                         <li class="{{ request()->routeIs('certificate') ? 'active' : ''}}">
                             <a href="/certificate">Gestionar Certificados</a>
                         </li>
+                        @endif
                         @endauth
                     </ul>
                 </ul>
