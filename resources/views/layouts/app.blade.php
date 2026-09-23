@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
@@ -27,7 +27,7 @@
         <nav id="sidebar">
             <div class="custom-menu">
                 <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="fa fa-bars"></i>
+                    <i class="bi bi-list"></i>
                     <span class="sr-only">Toggle Menu</span>
                 </button>
             </div>
@@ -37,9 +37,6 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="{{ request()->routeIs('contact') ? 'active' : ''}}">
                             <a href="/busqueda">Descargar certificados</a>
-                        </li>
-                        <li class="{{ request()->routeIs('contact') ? 'active' : ''}}">
-                            <a href="/busqueda2">Validar certificados</a>
                         </li>
                         @auth
                         <li class="{{ request()->routeIs('students') ? 'active' : ''}}">

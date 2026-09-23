@@ -21,7 +21,7 @@
 
 					<div class="col-sx-6">
                         <!-- Search form -->
-                        <a href="{{ route('Front.search2')}}" class="btn btn-azul" ><i class="fa fa-refresh" aria-hidden="true"></i> <span>REFESCAR</span></a>
+                        <a href="{{ route('Front.search2')}}" class="btn btn-azul" ><i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFESCAR</span></a>
 					</div>
 				</div>
 			</div>
@@ -67,8 +67,8 @@
 						<td>
 
 
-                            <a class="pencil" href="{{route('certificate.downloadverification',$certificate)}}"><i  style="color:#58bb15;" class="fa fa-file-o" aria-hidden="true"></i></a>
-                            <a class="pencil" href="{{route('certificate.downloadverification',$certificate)}}"><i  style="color:#58bb15;" class="fa fa-file-o" aria-hidden="true"></i></a>
+                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificate)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
+                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificate)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 				   </tbody>

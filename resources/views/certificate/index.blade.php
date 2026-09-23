@@ -23,21 +23,21 @@
                                     <input name="BusquedaCedula" class="form-control" placeholder="Buscar por cédula" type="search" id="search1">
                                 </div>
                                 <div class="col-auto">
-                                    <button type="submit" class="btn btn-verde"><i class="fa fa-search"></i></button>
+                                    <button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
                                 </div>
                                 <div class="col-auto">
                                     <a href="{{ route('certificate.index') }}" class="btn btn-azul">
-                                        <i class="fa fa-refresh" aria-hidden="true"></i> <span>REFRESCAR</span>
+                                        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFRESCAR</span>
                                     </a>
                                 </div>
                                 <div class="col-auto">
                                     <button type="button" class="btn btn-verde" data-toggle="modal" data-target="#exportExcelModal">
-                                        <i class="fa fa-file-excel-o" aria-hidden="true"></i> <span>EXPORTAR EXCEL</span>
+                                        <i class="bi bi-file-earmark-excel" aria-hidden="true"></i> <span>EXPORTAR EXCEL</span>
                                     </button>
                                 </div>
                                 <div class="col-auto">
                                     <a href="{{ route('certificate.create') }}" class="btn btn-verde">
-                                        <i class="fa fa-plus-circle" aria-hidden="true"></i> <span>NUEVO CERTIFICADO</span>
+                                        <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>NUEVO CERTIFICADO</span>
                                     </a>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-verde">
-                                    <i class="fa fa-download" aria-hidden="true"></i> Descargar Excel
+                                    <i class="bi bi-download" aria-hidden="true"></i> Descargar Excel
                                 </button>
                             </div>
                         </form>
@@ -115,12 +115,12 @@
                         <td>{{ date('d-m-Y', strtotime($cert->certificate_expedition)) }}</td>
                         <td>{{ date('d-m-Y', strtotime($cert->certificate_expedition . ' + ' . $cert->courses['course_validation'] . ' years')) }}</td>
                         <td>
-                            <a href="{{ route('certificate.show', $cert) }}" class="pencil"><i style="color:#58bb15;" class="fa fa-file-o" aria-hidden="true"></i></a>
+                            <a href="{{ route('certificate.show', $cert) }}" class="pencil icon-view" title="Ver certificado"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
                             <form method="POST" action="{{ route('certificate.destroy', $cert) }}" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button class="butondel" onclick="return confirm('¿Estás seguro de eliminar este certificado?')">
-                                    <i style="color:#b42222;" class="fa fa-trash-o" aria-hidden="true"></i>
+                                <button class="butondel" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este certificado?')">
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </td>

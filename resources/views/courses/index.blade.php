@@ -21,11 +21,11 @@
 
 					<div class="col-xs-6">
                         <a href="{{ route('courses.index') }}" class="btn btn-azul">
-                            <i class="fa fa-refresh" aria-hidden="true"></i> 
+                            <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
                             <span>REFRESCAR</span>
                         </a>
 						<a href="{{ route('courses.create') }}" class="btn btn-verde">
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i> 
+                            <i class="bi bi-plus-circle" aria-hidden="true"></i>
                             <span>NUEVO CURSO</span>
                         </a>
 					</div>
@@ -63,14 +63,14 @@
 						<td>{{ $course->course_duration }} Horas</td>
                         <td>{{ $course->course_validation }} Años</td>
 						<td>
-                            <a class="pencil" href="{{ route('courses.edit', $course) }}">
-                                <i style="color:#e0cc18;" class="fa fa-pencil" aria-hidden="true"></i>
+                            <a class="pencil" href="{{ route('courses.edit', $course) }}" title="Editar">
+                                <i class="bi bi-pencil-square" aria-hidden="true"></i>
                             </a>
                             <form method="POST" action="{{ route('courses.destroy', $course) }}" style="display:inline;">
-                                @csrf 
+                                @csrf
                                 @method('DELETE')
-                                <button class="butondel">
-                                    <i style="color:#b42222;" class="fa fa-trash-o" aria-hidden="true"></i>
+                                <button class="butondel" title="Eliminar">
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
 						</td>

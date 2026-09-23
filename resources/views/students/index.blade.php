@@ -21,16 +21,10 @@
 
                 <div class="col-sx-6 text-right">
                     <a href="{{ route('students.index') }}" class="btn btn-azul">
-                        <i class="fa fa-refresh" aria-hidden="true"></i> <span>REFRESCAR</span>
+                        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFRESCAR</span>
                     </a>
                     <a href="{{ route('students.create') }}" class="btn btn-verde">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i> <span>NUEVO ESTUDIANTE</span>
-                    </a>
-                    <a href="#deleteEmployeeModal" class="btn btn-azul" data-toggle="modal">
-                        <i class="fa fa-upload" aria-hidden="true"></i> <span>IMPORTAR</span>
-                    </a>
-                    <a href="{{ route('students.create') }}" class="btn btn-azul" data-toggle="modal">
-                        <i class="fa fa-download" aria-hidden="true"></i> <span>EXPORTAR</span>
+                        <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>NUEVO ESTUDIANTE</span>
                     </a>
                 </div>
             </div>
@@ -71,13 +65,13 @@
                         <td>{{ $student->student_age }} Años</td>
                         <td>{{ $student->student_mail }}</td>
                         <td>
-                            <a class="pencil" href="{{ route('students.edit', $student) }}">
-                                <i style="color:#e0cc18;" class="fa fa-pencil" aria-hidden="true"></i>
+                            <a class="pencil" href="{{ route('students.edit', $student) }}" title="Editar">
+                                <i class="bi bi-pencil-square" aria-hidden="true"></i>
                             </a>
                             <form method="POST" action="{{ route('students.destroy', $student) }}" style="display:inline;">
                                 @csrf @method('DELETE')
-                                <button class="butondel">
-                                    <i style="color:#b42222;" class="fa fa-trash-o" aria-hidden="true"></i>
+                                <button class="butondel" title="Eliminar">
+                                    <i class="bi bi-trash" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </td>

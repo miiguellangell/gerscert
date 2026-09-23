@@ -22,7 +22,7 @@
                     <div class="col-sx-6">
                         <!-- Refresh button -->
                         <a href="{{ route('front.search') }}" class="btn btn-azul">
-                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                            <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
                             <span>REFRESCAR</span>
                         </a>
                     </div>
@@ -67,8 +67,8 @@
                         @endphp
                         <td>{{ date("d-m-Y", strtotime($cert->certificate_expedition . " + $validation year")) }}</td>
                         <td>
-                            <a class="showpdf" href="{{ route('certificate.show', $cert) }}">
-                                <i style="color:#58bb15;" class="fa fa-eye" aria-hidden="true"></i>
+                            <a class="pencil icon-view" href="{{ route('certificate.show', $cert) }}" title="Ver certificado">
+                                <i class="bi bi-eye" aria-hidden="true"></i>
                             </a>
                         </td>
                     </tr>
