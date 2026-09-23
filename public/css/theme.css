@@ -125,6 +125,23 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     box-shadow: var(--shadow-sm);
 }
 
+#sidebar .btn-logout {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    background: transparent !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin-top: 0.5rem;
+    padding: 0.6rem 0.9rem;
+}
+
+.btn-logout:hover,
+.btn-logout:focus {
+    background: var(--red-500) !important;
+    border-color: var(--red-500) !important;
+    color: #fff !important;
+}
+
 #sidebar .footer {
     margin-top: auto;
     padding-top: 1rem;

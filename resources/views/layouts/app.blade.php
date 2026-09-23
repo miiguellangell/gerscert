@@ -53,20 +53,17 @@
                             <a href="/certificate">Gestionar Certificados</a>
                         </li>
                         @endauth
-                        @auth
-                        <li>
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                {{ __('Cerrar sesión') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
-                        @endauth
                     </ul>
                 </ul>
+                @auth
+                <button type="submit" form="logout-form" class="btn btn-logout">
+                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+                    <span>{{ __('Cerrar sesión') }}</span>
+                </button>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                @endauth
                 <div class="footer">
                     <p> Todos los derechos reservados &copy; <script>document.write(new Date().getFullYear());</script> <i class="icon-heart" aria-hidden="true"></i> Desarrollado Por: <br> <a href="mailto:miiguellagellmc@gmail.com" target="_blank">Miguel Angel</a></p>
                 </div>
