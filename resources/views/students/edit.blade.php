@@ -49,6 +49,12 @@
             </div>
 
             <div class="form-group">
+                <label for="student_phone">Número de teléfono</label>
+                <input type="tel" class="form-control" name="student_phone" id="student_phone" value="{{ $students->student_phone}}" required>
+                {!!$errors->first('student_phone', '<small>:message</small><br>' )!!}
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Editar</button>
             </div>
 

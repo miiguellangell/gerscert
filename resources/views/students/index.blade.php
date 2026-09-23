@@ -52,6 +52,7 @@
                         <th>Descripcion del estudiante</th>
                         <th>Edad del estudiante</th>
                         <th>Correo del estudiante</th>
+                        <th>Teléfono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -70,6 +71,7 @@
                         <td>{{ $student->student_description }}</td>
                         <td>{{ $student->student_age }} Años</td>
                         <td>{{ $student->student_mail }}</td>
+                        <td>{{ $student->student_phone }}</td>
                         <td>
                             <a class="pencil" href="{{ route('students.edit', $student) }}" title="Editar">
                                 <i class="bi bi-pencil-square" aria-hidden="true"></i>
@@ -84,7 +86,7 @@
                     </tr>
                     @empty
                     @include('partials.empty-state', [
-                        'colspan' => 8,
+                        'colspan' => 9,
                         'icon' => request()->filled('BusquedaEstudiante') ? 'bi-search' : 'bi-people',
                         'message' => request()->filled('BusquedaEstudiante')
                             ? 'No se encontraron estudiantes que coincidan con "'.request('BusquedaEstudiante').'".'

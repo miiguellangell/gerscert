@@ -52,6 +52,8 @@ class StudentsController extends Controller
 
                 'student_age'=>'required',
 
+                'student_phone'=>'required|string|max:20',
+
             ]);
 
 
@@ -82,13 +84,24 @@ class StudentsController extends Controller
      */
     public function update(students $students)
     {
+        $fields = request()->validate([
+            'student_id' => 'required',
+            'typeid' => 'required',
+            'student_name' => 'required',
+            'student_description' => 'required',
+            'student_age' => 'required',
+            'student_mail' => 'required',
+            'student_phone' => 'required|string|max:20',
+        ]);
+
         $students -> update([
-        'id' => request('student_id'),
-        'typeid' => request('typeid'),
-        'student_name' => request('student_name'),
-        'student_description' => request('student_description'),
-        'student_age' => request('student_age'),
-        'student_mail' => request('student_mail'),
+        'id' => $fields['student_id'],
+        'typeid' => $fields['typeid'],
+        'student_name' => $fields['student_name'],
+        'student_description' => $fields['student_description'],
+        'student_age' => $fields['student_age'],
+        'student_mail' => $fields['student_mail'],
+        'student_phone' => $fields['student_phone'],
 
         ]);
 
