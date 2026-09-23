@@ -14,11 +14,16 @@ class StudentsController extends Controller
      */
     public function index(Request $request)
     {
-          $busqueda_curso = $request->get('BusquedaEstudiante');
+          $busqueda = $request->get('BusquedaEstudiante');
+
+          $students = students::when($busqueda, function ($query) use ($busqueda) {
+                $query->where('id', 'like', "%$busqueda%")
+                      ->orWhere('student_name', 'like', "%$busqueda%");
+            })->paginate(10)->withQueryString();
 
           return view('students.index', [
 
-            'students'=> students::where('id','like', "%$busqueda_curso%") ->paginate(10)
+            'students'=> $students
 
             ]);
     }

@@ -7,25 +7,31 @@
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h2 class="table-head-title">Gestionar <b>Estudiantes</b></h2>
                 </div>
 
-                <div class="col-xs-6">
-                    <form>
-                        <div class="md-form active-pink active-pink-2 mb-3">
-                            <input name="BusquedaEstudiante" class="form-search" placeholder="Buscar..." type="search" id="search1" aria-label="Search" mdbInput>
+                <div class="col-sm-8">
+                    <form method="GET" action="{{ route('students.index') }}">
+                        <div class="form-row">
+                            <div class="col">
+                                <input name="BusquedaEstudiante" class="form-control" placeholder="Buscar por cédula o nombre..." type="search" id="search1" aria-label="Search" value="{{ request('BusquedaEstudiante') }}">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
+                            </div>
+                            <div class="col-auto">
+                                <a href="{{ route('students.index') }}" class="btn btn-azul">
+                                    <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFRESCAR</span>
+                                </a>
+                            </div>
+                            <div class="col-auto">
+                                <a href="{{ route('students.create') }}" class="btn btn-verde">
+                                    <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>NUEVO ESTUDIANTE</span>
+                                </a>
+                            </div>
                         </div>
                     </form>
-                </div>
-
-                <div class="col-sx-6 text-right">
-                    <a href="{{ route('students.index') }}" class="btn btn-azul">
-                        <i class="bi bi-arrow-clockwise" aria-hidden="true"></i> <span>REFRESCAR</span>
-                    </a>
-                    <a href="{{ route('students.create') }}" class="btn btn-verde">
-                        <i class="bi bi-plus-circle" aria-hidden="true"></i> <span>NUEVO ESTUDIANTE</span>
-                    </a>
                 </div>
             </div>
         </div>
