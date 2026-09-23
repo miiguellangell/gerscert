@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap4.min.css">
+
     <div class="signup-form">
         <form action="{{ route('certificate.update', $certificate) }}" method="post">
             @csrf @method('PATCH')
@@ -60,8 +62,19 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
 
     <script type="text/javascript">
+        new TomSelect('#students_id', {
+            create: false,
+            placeholder: 'Buscar estudiante por nombre...',
+            sortField: { field: 'text', direction: 'asc' },
+        });
+        new TomSelect('#courses_id', {
+            create: false,
+            placeholder: 'Buscar curso...',
+        });
+
         $('#datepicker').datepicker({
             weekStart: 1,
             daysOfWeekHighlighted: "6,0",
