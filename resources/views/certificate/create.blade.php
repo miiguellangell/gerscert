@@ -9,9 +9,9 @@
             <h2>Nuevo Certificado</h2>
 
             <div class="form-group">
-                <label >Seleccione Un Estudiante</label>
-                <select class="selectpicker" data-live-search="true" name="students_id" id="">
-                    <option value="">Estudiantes</option>
+                <label for="students_id">Estudiante</label>
+                <select class="form-control" name="students_id" id="students_id" required>
+                    <option value="">Seleccione un estudiante</option>
 
                     @foreach ($students as $student)
                     <option value="{{$student->id}}">{{$student->student_name}}</option>
@@ -21,9 +21,9 @@
             </div>
 
             <div class="form-group">
-                <label >Seleccione Un curso</label>
-                <select class="selectpicker" data-live-search="true" name="courses_id" id="">
-                    <option value="">Cursos</option>
+                <label for="courses_id">Curso</label>
+                <select class="form-control" name="courses_id" id="courses_id" required>
+                    <option value="">Seleccione un curso</option>
 
                     @foreach ($courses as $course)
                     <option value="{{$course->id}}">{{$course->course_name}}</option>
@@ -32,26 +32,22 @@
                 </select>
             </div>
 
-            <div  class="form-group">
-                <label >Seleccione Una fecha de Expedicion</label>
-               <div class="row" >
-                    <div class="col">
-                        <input name="certificate_expedition" data-date-format="yyyy-m-d" id="datepicker">
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="datepicker">Fecha de expedición</label>
+                <input name="certificate_expedition" data-date-format="yyyy-m-d" id="datepicker" class="form-control" autocomplete="off" required>
             </div>
 
             <div class="form-group">
-                <label>Seleccione el idioma del certificado</label>
-                <select class="selectpicker" name="language" id="language_select">
+                <label for="language_select">Idioma del certificado</label>
+                <select class="form-control" name="language" id="language_select">
                     <option value="es" selected>Español</option>
                     <option value="en">English</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Seleccione la imagen de fondo del certificado</label>
-                <select class="selectpicker" name="background_image" id="background_select">
+                <label for="background_select">Imagen de fondo</label>
+                <select class="form-control" name="background_image" id="background_select">
                     @foreach ($backgrounds as $background)
                         <option value="{{ $background }}" {{ $background === '3100-de-2019.jpg' ? 'selected' : '' }}>
                             {{ ucfirst(pathinfo($background, PATHINFO_FILENAME)) }}

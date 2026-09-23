@@ -542,21 +542,53 @@ table.table td.empty-state {
 }
 
 .signup-form label {
+    display: block;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--muted);
     margin-bottom: 0.35rem;
 }
 
+/* The legacy stylesheet sets form-control text to a washed-out grey
+   (#969fa4) that reads like placeholder text even when a real value is
+   filled in. Force real, readable ink instead. */
 .form-control {
     border: 1px solid var(--border) !important;
     border-radius: var(--radius-sm) !important;
+    color: var(--ink) !important;
+    background-color: #fff !important;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control::placeholder {
+    color: #a7b0bd !important;
 }
 
 .form-control:focus {
     border-color: var(--navy-500) !important;
     box-shadow: 0 0 0 3px rgba(67, 93, 125, 0.15) !important;
+}
+
+/* Native <select class="form-control"> — the bootstrap-select JS plugin
+   is loaded but never initialized anywhere, so selects using it rendered
+   as tiny, unstyled native dropdowns. Plain native selects, styled to
+   match text inputs, are simpler and don't depend on that plugin. */
+select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 2.25rem !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23435D7D' d='M4 6l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 14px;
+}
+
+.signup-form small {
+    display: block;
+    color: var(--red-500);
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
 }
 
 .signup-form .btn-block {
