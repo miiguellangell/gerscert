@@ -313,19 +313,37 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     margin: 0 !important;
     border-radius: 0 !important;
     padding: 1.1rem 1.25rem;
+    /* Safety net: if a viewport is too narrow to fit everything on one row
+       (once nowrap kicks in below), scroll horizontally within the header
+       bar instead of visually breaking it. */
+    overflow-x: auto;
 }
 
 .table-title .row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem 0.85rem;
     margin: 0;
 }
 
+/* Bootstrap's col-sm-* give the title a fixed percentage width, which is
+   what was starving the form of space and pushing the last button onto a
+   second line. Let each side size to its own content instead (desktop
+   only — on mobile they should stay full-width and stack, see below). */
+@media (min-width: 768px) {
+    .table-title .row > [class*="col-"] {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
 .table-title h2.table-head-title {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     margin: 0;
+    white-space: nowrap;
 }
 
 .table-title form {
@@ -356,14 +374,22 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
 .table-title .btn {
     height: 40px;
-    padding: 0 0.9rem;
-    font-size: 0.82rem;
+    padding: 0 0.8rem;
+    font-size: 0.8rem;
 }
 
 .table-title .form-row input.form-control {
-    width: 240px !important;
+    width: 190px !important;
     max-width: 100%;
     height: 40px !important;
+}
+
+.table-title .form-row input#datepicker {
+    width: 140px !important;
+}
+
+.table-title .form-row input.search-input-wide {
+    width: 250px !important;
 }
 
 .form-search {
@@ -371,6 +397,18 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     padding: 0 0.75rem !important;
     border-radius: var(--radius-sm) !important;
     min-width: 0;
+}
+
+/* Force everything onto one row once the sidebar stops being an overlay
+   (>=992px). Below that it's fine — and expected — to wrap onto stacked
+   rows. If a desktop window is narrow enough that it still doesn't fit,
+   the header scrolls horizontally (see .table-title overflow-x above)
+   instead of dropping a button onto a second line. */
+@media (min-width: 992px) {
+    .table-title .row,
+    .table-title .form-row {
+        flex-wrap: nowrap;
+    }
 }
 
 .mb-3 {

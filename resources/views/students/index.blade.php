@@ -15,7 +15,7 @@
                     <form method="GET" action="{{ route('students.index') }}">
                         <div class="form-row">
                             <div class="col">
-                                <input name="BusquedaEstudiante" class="form-control" placeholder="Buscar por cédula o nombre..." type="search" id="search1" aria-label="Search" value="{{ request('BusquedaEstudiante') }}">
+                                <input name="BusquedaEstudiante" class="form-control search-input-wide" placeholder="Buscar por cédula o nombre..." type="search" id="search1" aria-label="Search" value="{{ request('BusquedaEstudiante') }}">
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
