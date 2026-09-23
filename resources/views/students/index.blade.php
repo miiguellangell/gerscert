@@ -56,7 +56,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($students as $student)
+                    @forelse($students as $student)
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -82,7 +82,16 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    @include('partials.empty-state', [
+                        'colspan' => 8,
+                        'icon' => request()->filled('BusquedaEstudiante') ? 'bi-search' : 'bi-people',
+                        'message' => request()->filled('BusquedaEstudiante')
+                            ? 'No se encontraron estudiantes que coincidan con "'.request('BusquedaEstudiante').'".'
+                            : 'Aún no hay estudiantes registrados.',
+                        'clearUrl' => request()->filled('BusquedaEstudiante') ? route('students.index') : null,
+                    ])
+                    @endforelse
                 </tbody>
             </table>
         </div>

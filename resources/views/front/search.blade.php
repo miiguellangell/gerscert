@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($certificate as $cert)
+                    @forelse($certificate as $cert)
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -75,7 +75,16 @@
                             </a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    @include('partials.empty-state', [
+                        'colspan' => 8,
+                        'icon' => request()->filled('Busqueda') ? 'bi-search' : 'bi-file-earmark-text',
+                        'message' => request()->filled('Busqueda')
+                            ? 'No se encontraron certificados que coincidan con "'.request('Busqueda').'".'
+                            : 'Aún no hay certificados disponibles.',
+                        'clearUrl' => request()->filled('Busqueda') ? route('front.search') : null,
+                    ])
+                    @endforelse
                 </tbody>
             </table>
             </div>

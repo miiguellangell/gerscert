@@ -55,7 +55,7 @@
 						<th>Acciones</th>
 					</tr>
 				</thead>
-                @foreach($courses as $course)
+                @forelse($courses as $course)
 				<tbody>
 					<tr>
 						<td>
@@ -82,7 +82,18 @@
 						</td>
 					</tr>
 				</tbody>
-                @endforeach
+                @empty
+                <tbody>
+                    @include('partials.empty-state', [
+                        'colspan' => 6,
+                        'icon' => request()->filled('Busqueda') ? 'bi-search' : 'bi-journal-bookmark',
+                        'message' => request()->filled('Busqueda')
+                            ? 'No se encontraron cursos que coincidan con "'.request('Busqueda').'".'
+                            : 'Aún no hay cursos registrados.',
+                        'clearUrl' => request()->filled('Busqueda') ? route('courses.index') : null,
+                    ])
+                </tbody>
+                @endforelse
 			</table>
 			</div>
 

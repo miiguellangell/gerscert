@@ -59,7 +59,7 @@ class CertificateController extends Controller
         $busqueda = $request->get('BusquedaCedula');
 
         return view('certificate.index', [
-            'certificate' => certificates::where('students_id', 'like', "%$busqueda%")->paginate(10)
+            'certificate' => certificates::where('students_id', 'like', "%$busqueda%")->paginate(10)->withQueryString()
         ]);
     }
 

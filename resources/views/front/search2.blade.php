@@ -50,7 +50,7 @@
 						<th>Acciones</th>
 					</tr>
 				</thead>
-                @foreach($certificate as $certificate)
+                @forelse($certificate as $certificateItem)
 				<tbody>
 					<tr>
 
@@ -60,24 +60,35 @@
 								<label for="checkbox2"></label>
 							</span>
 						</td>
-                        <td>{{ $certificate->students['id']}}</td>
-						<td>{{ $certificate->students['student_name']}}</td>
-						<td>{{ $certificate->courses['course_name']}}</td>
-                        <td>{{ $certificate->courses['course_duration']}}</td>
-                        <td>{{ date("d-m-Y",strtotime($certificate->certificate_expedition))}}</td>
+                        <td>{{ $certificateItem->students['id']}}</td>
+						<td>{{ $certificateItem->students['student_name']}}</td>
+						<td>{{ $certificateItem->courses['course_name']}}</td>
+                        <td>{{ $certificateItem->courses['course_duration']}}</td>
+                        <td>{{ date("d-m-Y",strtotime($certificateItem->certificate_expedition))}}</td>
                         @php
-                        $validation=$certificate->courses['course_validation']
+                        $validation=$certificateItem->courses['course_validation']
                         @endphp
-                        <td>{{date("d-m-Y",strtotime($certificate->certificate_expedition."+ $validation year"))}}</td>
+                        <td>{{date("d-m-Y",strtotime($certificateItem->certificate_expedition."+ $validation year"))}}</td>
 						<td>
 
 
-                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificate)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
-                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificate)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
+                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificateItem)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
+                            <a class="pencil icon-view" href="{{route('certificate.downloadverification',$certificateItem)}}" title="Descargar"><i class="bi bi-file-earmark-text" aria-hidden="true"></i></a>
 						</td>
 					</tr>
 				   </tbody>
-                   @endforeach
+                   @empty
+                   <tbody>
+                       @include('partials.empty-state', [
+                           'colspan' => 8,
+                           'icon' => request()->filled('Busqueda') ? 'bi-search' : 'bi-file-earmark-text',
+                           'message' => request()->filled('Busqueda')
+                               ? 'No se encontraron certificados que coincidan con "'.request('Busqueda').'".'
+                               : 'Aún no hay certificados disponibles.',
+                           'clearUrl' => request()->filled('Busqueda') ? route('Front.search2') : null,
+                       ])
+                   </tbody>
+                   @endforelse
                    {{-- {{ $certificate->links("pagination::bootstrap-4") }} --}}
 			</table>
 			</div>

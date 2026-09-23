@@ -468,6 +468,37 @@ table.table td {
     padding: 1rem 1.25rem;
 }
 
+/* Empty-state fallback row shown when a table/search has no results */
+table.table td.empty-state {
+    padding: 0;
+    border-top: none;
+}
+
+.empty-state-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.empty-state-inner i {
+    font-size: 2.75rem;
+    color: var(--border);
+}
+
+.empty-state-inner p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.empty-state-inner .btn {
+    margin-top: 0.25rem;
+}
+
 .pagination {
     justify-content: flex-end;
     float: none !important;

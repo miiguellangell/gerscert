@@ -20,7 +20,7 @@
                                     <input name="BusquedaFecha" data-date-format="yyyy-mm-dd" id="datepicker" class="form-control" placeholder="Fecha">
                                 </div>
                                 <div class="col">
-                                    <input name="BusquedaCedula" class="form-control" placeholder="Buscar por cédula" type="search" id="search1">
+                                    <input name="BusquedaCedula" class="form-control" placeholder="Buscar por cédula" type="search" id="search1" value="{{ request('BusquedaCedula') }}">
                                 </div>
                                 <div class="col-auto">
                                     <button type="submit" class="btn btn-verde"><i class="bi bi-search"></i></button>
@@ -100,7 +100,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($certificate as $cert)
+                    @forelse($certificate as $cert)
                     <tr>
                         <td>
                             <span class="custom-checkbox">
@@ -125,7 +125,21 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    @php
+                        // BusquedaFecha isn't wired to a filter yet (see CertificateController@index),
+                        // so only the cédula field counts as an active search here.
+                        $hasSearch = request()->filled('BusquedaCedula');
+                    @endphp
+                    @include('partials.empty-state', [
+                        'colspan' => 8,
+                        'icon' => $hasSearch ? 'bi-search' : 'bi-file-earmark-text',
+                        'message' => $hasSearch
+                            ? 'No se encontraron certificados que coincidan con tu búsqueda.'
+                            : 'Aún no hay certificados registrados.',
+                        'clearUrl' => $hasSearch ? route('certificate.index') : null,
+                    ])
+                    @endforelse
                 </tbody>
             </table>
             </div>
