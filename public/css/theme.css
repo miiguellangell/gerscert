@@ -790,18 +790,20 @@ button.butondel,
 }
 
 /* -------------------------------------------------
-   Widget fixes: bootstrap-select / datepicker overflow
+   Widget fixes: dropdown overflow
    ------------------------------------------------- */
 .dropdown-menu {
-    min-width: 220px !important;
-    left: 0 !important;
     max-width: 90vw;
 }
 
-.datepicker.datepicker-dropdown {
-    left: auto !important;
-    top: auto !important;
-}
+/* Nothing else in the app renders a real Bootstrap .dropdown-menu anymore
+   (bootstrap-select was removed) — the only thing that still gets this
+   class is bootstrap-datepicker's calendar popup, which positions itself
+   with inline top/left styles computed by JS. Forcing left/min-width here
+   with !important, like earlier versions of this rule did, silently wins
+   over that inline positioning and makes the calendar pop up in the wrong
+   place. The actual broken source of that bug is two legacy rules in
+   style.css (see there) — fixed at the source instead of patched here. */
 
 /* -------------------------------------------------
    Responsive tweaks

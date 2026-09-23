@@ -8705,19 +8705,11 @@ button, input, optgroup, select, textarea {
     padding-bottom: 3px;
 }
 
-.dropdown-menu{
-  min-width: 430px !important;
-  left: -7% !important;
-}
-
-.datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left.datepicker-orient-top {
-    width: 274px !important;
-    min-width: 16px !important;
-    top: 500px;
-    left: 520.5px !important;
-    z-index: 10;
-    display: block;
-}
+/* Removed two hardcoded-position rules that used to live here
+   (.dropdown-menu { left: -7% !important } and a 5-class datepicker
+   selector pinned to top:500px/left:520.5px !important). Both fought
+   bootstrap-datepicker's own JS-computed inline positioning and made
+   the calendar pop up in the wrong spot — see theme.css. */
 
 .datepicker table {
     width: 100%;
