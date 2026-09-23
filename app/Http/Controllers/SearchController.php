@@ -16,19 +16,18 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        $busqueda = $request->get('Busqueda');
+        $busqueda = trim((string) $request->get('Busqueda'));
 
-        $certificate = certificates::when($busqueda, function ($query) use ($busqueda) {
-                $query->where('students_id', 'like', "%$busqueda%")
-                      ->orWhereHas('students', function ($q) use ($busqueda) {
-                          $q->where('student_name', 'like', "%$busqueda%");
-                      });
-            })->paginate(50)->withQueryString();
+        // Public page: never list every certificate by default, and only
+        // ever match an exact document number. A partial/"like" match here
+        // would let anyone browse other people's records by trial and error.
+        $certificate = $busqueda !== ''
+            ? certificates::where('students_id', $busqueda)->get()
+            : collect();
 
         return view('front.search', [
-
-        'certificate'=> $certificate
-
+            'certificate' => $certificate,
+            'searched' => $busqueda !== '',
         ]);
     }
 

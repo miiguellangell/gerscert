@@ -620,6 +620,148 @@ button.butondel,
 }
 
 /* -------------------------------------------------
+   Public certificate lookup (/busqueda) — centered search,
+   no data shown until a document number is submitted.
+   ------------------------------------------------- */
+.search-hero {
+    max-width: 520px;
+    margin: 3rem auto 2.5rem;
+    padding: 2.5rem 2rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.search-hero-icon {
+    font-size: 2.75rem;
+    color: var(--green-500);
+}
+
+.search-hero h2 {
+    margin: 0.75rem 0 0.4rem;
+    font-size: 1.4rem;
+    color: var(--ink);
+}
+
+.search-hero-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0 0 1.5rem;
+}
+
+.search-hero-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-hero-form .form-control {
+    height: 44px !important;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.search-hero-form .btn {
+    height: 44px;
+    width: auto !important;
+    flex-shrink: 0;
+    padding: 0 1.25rem;
+}
+
+@media (max-width: 480px) {
+    .search-hero-form {
+        flex-direction: column;
+    }
+
+    .search-hero-form .btn {
+        width: 100% !important;
+    }
+}
+
+.search-results {
+    max-width: 720px;
+    margin: 0 auto 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.search-result-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 1.1rem 1.25rem;
+    flex-wrap: wrap;
+}
+
+.search-result-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(130, 152, 60, 0.12);
+    color: var(--green-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.search-result-body {
+    flex: 1 1 260px;
+    min-width: 0;
+}
+
+.search-result-body h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--ink);
+}
+
+.search-result-name {
+    margin: 0.15rem 0 0.5rem;
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.search-result-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.search-result-meta i {
+    margin-right: 0.25rem;
+}
+
+.search-empty {
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: var(--muted);
+    padding: 1rem;
+}
+
+.search-empty i {
+    font-size: 2.25rem;
+    color: var(--border);
+}
+
+.search-empty p {
+    margin: 0.5rem 0 0;
+}
+
+.search-empty-hint {
+    font-size: 0.82rem;
+    color: #a7b0bd;
+}
+
+/* -------------------------------------------------
    Widget fixes: bootstrap-select / datepicker overflow
    ------------------------------------------------- */
 .dropdown-menu {
