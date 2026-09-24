@@ -21,15 +21,21 @@
 </head>
 <body>
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Mobile-only top bar: stays visible (logo + toggle) regardless of
+         whether the sidebar drawer is open or closed. Hidden on desktop,
+         where the sidebar itself is always visible with its own logo. -->
+    <header class="mobile-topbar">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="bi bi-list"></i>
+            <span class="sr-only">Toggle Menu</span>
+        </button>
+        <img class="mobile-topbar-logo" src="https://gerscol.com/wp-content/uploads/2021/01/logo-blanco-gerscol-centro-de-capacitacion-en-salud.svg" alt="Gerscol Logo">
+    </header>
+
     <div class="wrapper d-flex align-items-stretch">
         <!-- Sidebar -->
         <nav id="sidebar">
-            <div class="custom-menu">
-                <button type="button" id="sidebarCollapse" class="btn btn-primary">
-                    <i class="bi bi-list"></i>
-                    <span class="sr-only">Toggle Menu</span>
-                </button>
-            </div>
             <div class="p-4 pt-5">
                 <img class="imglogo" src="https://gerscol.com/wp-content/uploads/2021/01/logo-blanco-gerscol-centro-de-capacitacion-en-salud.svg" alt="Gerscol Logo" width="500" height="600">
                 <ul class="list-unstyled components mb-5">

@@ -169,6 +169,49 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     z-index: 1030;
 }
 
+/* Mobile top bar: logo + toggle, always visible (open or closed) so the
+   brand isn't hidden away until the drawer is opened. Desktop keeps the
+   sidebar visible at all times with its own logo, so this stays hidden
+   there. */
+.mobile-topbar {
+    display: none;
+}
+
+@media (max-width: 991.98px) {
+    .mobile-topbar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 56px;
+        padding: 0 1rem;
+        background: linear-gradient(90deg, var(--navy-900) 0%, var(--navy-500) 100%);
+        box-shadow: var(--shadow-sm);
+        z-index: 1050;
+    }
+
+    .mobile-topbar-logo {
+        height: 26px;
+        width: auto;
+    }
+
+    /* Perfect circle, regardless of the legacy "button { width: 100%
+       !important }" rule in style.css or any padding .btn normally has. */
+    .mobile-topbar #sidebarCollapse {
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+}
+
 @media (max-width: 991.98px) {
     /* style.css hides the sidebar on mobile with a hardcoded
        "margin-left: -250px", which only fully conceals it as long as the
@@ -177,6 +220,19 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
        covering the full width and left a sliver permanently visible.
        transform: translateX(-100%) always shifts it by its own full
        width, whatever that is, so this stays correct at any size. */
+    /* The drawer's own big logo would otherwise sit right behind the
+       fixed .mobile-topbar (same z-index stack, topbar on top) and get
+       visually cut in half by it — the topbar's small logo already
+       covers branding while the drawer is closed *or* open, so drop the
+       duplicate and push the nav links below the topbar's height. */
+    #sidebar .imglogo {
+        display: none;
+    }
+
+    #sidebar .p-4.pt-5 {
+        padding-top: calc(56px + 1rem) !important;
+    }
+
     #sidebar {
         position: fixed;
         top: 0;
@@ -193,6 +249,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     #content {
         width: 100%;
         margin-left: 0 !important;
+        padding-top: calc(56px + 1rem) !important;
     }
 
     body.sidebar-open .sidebar-backdrop {
@@ -201,12 +258,6 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
     body.sidebar-open {
         overflow: hidden;
-    }
-}
-
-@media (min-width: 992px) {
-    #sidebarCollapse {
-        display: none;
     }
 }
 
