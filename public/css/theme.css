@@ -831,6 +831,38 @@ button.butondel,
     margin-right: 0.25rem;
 }
 
+.search-result-card.is-vencido {
+    border-left: 4px solid var(--red-500);
+}
+
+.search-result-card.is-vencido .search-result-icon {
+    background: rgba(217, 83, 79, 0.12);
+    color: var(--red-500);
+}
+
+.vencido-hero-icon {
+    color: var(--red-500);
+}
+
+.search-result-badge {
+    display: inline-block;
+    margin-bottom: 0.25rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background: var(--red-500);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.search-result-aviso {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink);
+}
+
 .search-empty {
     max-width: 480px;
     margin: 0 auto 2rem;

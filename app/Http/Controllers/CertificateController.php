@@ -159,7 +159,14 @@ class CertificateController extends Controller
     public function downloadPDF($id)
     {
         setlocale(LC_TIME, 'spanish');
-        $certificates = certificates::find($id);
+        $certificates = certificates::findOrFail($id);
+
+        // Public route (search results + QR on the PDF): an expired
+        // certificate is no longer handed out, only admins can still get it.
+        if ($certificates->isVencido() && ! auth()->user()?->is_admin) {
+            return response()->view('certificate.vencido', ['certificate' => $certificates], 410);
+        }
+
         $qrCodeSvg = QrCode::format('svg')->size(120)->generate(route('certificate.show', $id));
         $qrCodeBase64 = base64_encode($qrCodeSvg);
 
