@@ -89,7 +89,7 @@ Route::view('/','home')->name('home');
     login. Registered after the admin group's /certificate/create and
     /certificate/{certificate}/editar so this wildcard doesn't swallow
     those more specific paths. */
- Route::get('/certificate/{id}','CertificateController@downloadPDF')->name('certificate.show');
+ Route::get('/certificate/{id}','CertificateController@downloadPDF')->middleware('noindex')->name('certificate.show');
 
      /* pdf Routes  */
 
@@ -102,4 +102,4 @@ Route::view('/','home')->name('home');
      Route::get('/test-pdf', function () {
         $certificate = App\Models\certificates::find(1); // Cambia el ID según sea necesario
         return view('certificate.show', ['certificates' => $certificate]);
-    });
+    })->middleware('noindex');
