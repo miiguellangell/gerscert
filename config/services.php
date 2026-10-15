@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // Llamadas desde WordPress (gerscol.com) para emitir certificados.
+    'wordpress' => [
+        'token' => env('WP_API_TOKEN'),
+    ],
+
 ];

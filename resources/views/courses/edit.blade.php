@@ -26,6 +26,12 @@
                 {!!$errors->first('course_validation', '<small>:message</small><br>' )!!}
             </div>
             <div class="form-group">
+                <label for="wp_course_id">ID del curso en WordPress</label>
+                <input type="number" min="1" class="form-control" name="wp_course_id" id="wp_course_id" value="{{ $courses->wp_course_id }}">
+                <small class="form-text text-muted">ID del curso de Tutor LMS en gerscol.com. Vacío si el curso no existe allá.</small>
+                {!!$errors->first('wp_course_id', '<small>:message</small><br>' )!!}
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Modificar</button>
             </div>
         </form>

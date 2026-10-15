@@ -50,6 +50,8 @@ class CourseController extends Controller
 
                 'course_validation'=>'required',
 
+                'wp_course_id'=>'nullable|integer|min:1',
+
             ]);
 
 
@@ -86,6 +88,7 @@ class CourseController extends Controller
         'course_description' => request('course_description'),
         'course_duration' => request('course_duration'),
         'course_validation' => request('course_validation'),
+        'wp_course_id' => request('wp_course_id') ?: null,
 
         ]);
 

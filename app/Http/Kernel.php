@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'noindex' => \App\Http\Middleware\NoIndex::class,
         'admin' => \App\Http\Middleware\EnsureUserIsAdmin::class,
+        'wp.token' => \App\Http\Middleware\VerifyWpToken::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

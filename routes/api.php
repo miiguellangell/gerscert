@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 //  Route::middleware('auth:api')->get('/user', function (Request $request) {
 //      return $request->user();
 // });
+
+// Emisión de certificados desde WordPress (Tutor LMS → Reportes → Estudiante).
+Route::post('/wp/certificados', [\App\Http\Controllers\Api\WpCertificateController::class, 'store'])
+    ->middleware('wp.token');
